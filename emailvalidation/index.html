@@ -1,0 +1,43 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Validator</title>
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+
+    <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-md text-center">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6">Email Validator</h1>
+
+        <!-- Form for submitting the email address -->
+        <form action="/" method="post" class="space-y-4">
+            <input 
+                type="text" 
+                name="email" 
+                placeholder="Enter your email address" 
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+                required>
+            
+            <button 
+                type="submit" 
+                class="w-full px-4 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-200">
+                Validate
+            </button>
+        </form>
+
+        <!-- Display the validation result message from the Python backend -->
+        {% if result %}
+            <p id="result-message" class="mt-6 text-lg font-medium 
+                {% if 'Valid' in result %}text-green-600{% else %}text-red-600{% endif %}">
+                {{ result }}
+            </p>
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
